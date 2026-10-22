@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Receipt Maker · Lokah Samasta Goshala</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#7a1c1c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%237a1c1c'/%3E%3Cpath d='M32 14c-6 8-6 16 0 24 6-8 6-16 0-24zM14 32c8-2 14 0 18 8-8 2-14 0-18-8zm36 0c-8-2-14 0-18 8 8 2 14 0 18-8z' fill='%23f2b33d'/%3E%3Ccircle cx='32' cy='46' r='3' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Tiro+Devanagari+Sanskrit&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#7a1c1c;--saffron:#e2731b;--turmeric:#f2b33d;--cream:#fbf4e6;--sand:#ead8b6;--ink:#2a1a12;--muted:#6b5546;--wa:#1fa855}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:"Mukta","Noto Sans Tamil",system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{background:var(--maroon);color:#fff;padding:16px;text-align:center}
+header h1{font-family:"Cormorant Garamond",serif;font-size:1.6rem;line-height:1.1}
+header p{opacity:.85;font-size:.9rem}
+main{width:min(980px,100% - 24px);margin:18px auto 60px;display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:start}
+@media (max-width:860px){main{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--sand);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(74,30,10,.08)}
+h2{font-size:1.05rem;color:var(--maroon);margin-bottom:10px}
+label{display:block;font-weight:600;font-size:.88rem;margin:10px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;padding:11px 12px;border:1.5px solid var(--sand);border-radius:12px;font:500 1rem "Mukta","Noto Sans Tamil",sans-serif;background:#fffdf8;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)}
+textarea{min-height:92px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:999px;padding:13px 16px;font:700 1rem "Mukta",sans-serif;cursor:pointer;margin-top:10px;text-decoration:none}
+.btn-s{background:var(--saffron);color:#fff}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-o{background:#fff;color:var(--maroon);border:1.5px solid var(--maroon)}
+.btn-sm{width:auto;padding:7px 14px;font-size:.85rem;margin:6px 0 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:6px}
+.preview canvas{width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(74,30,10,.18);display:block}
+.log{margin-top:14px;font-size:.88rem}
+.log table{width:100%;border-collapse:collapse}
+.log td,.log th{padding:6px 4px;border-bottom:1px solid #f0e4cc;text-align:left}
+.log th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <h1>Donation Receipt Maker</h1>
+  <p>Lokah Samasta Sukhino Bhavantu Goshala · நன்கொடை ரசீது</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. Paste the donor's WhatsApp message <small style="font-weight:400;color:var(--muted)">(optional)</small></h2>
+    <textarea id="paste" placeholder="Long-press the donor's message in WhatsApp → Copy → paste here. Name, place, amount and seva fill in automatically."></textarea>
+    <button class="btn btn-o btn-sm" id="fillBtn" type="button">Fill from message</button>
+
+    <h2 style="margin-top:18px">2. Check the details</h2>
+    <label>Donor name <small>· பெயர்</small></label>
+    <input id="name" placeholder="e.g. Ramesh Kumar">
+    <div class="row">
+      <div><label>Place <small>· ஊர்</small></label><input id="place" placeholder="e.g. Chennai"></div>
+      <div><label>Amount (₹)</label><input id="amount" type="number" inputmode="numeric" placeholder="1167"></div>
+    </div>
+    <label>Seva <small>· சேவை</small></label>
+    <select id="seva">
+      <option>Daily Seva — food &amp; care for 1 day</option>
+      <option>Weekly Seva — food &amp; care for 1 week</option>
+      <option>Monthly Seva — food &amp; care for 1 month</option>
+      <option>Yearly Seva — food &amp; care for 1 year</option>
+      <option>Kutchi Theevanam (Green fodder)</option>
+      <option>Gothumai Thavidu (Wheat bran)</option>
+      <option>Karukka Thavidu (Paddy bran)</option>
+      <option>Punnaku (Oil cake)</option>
+      <option>Vaikol (Paddy straw)</option>
+      <option>Meichal caretaker</option>
+      <option selected>General donation for Go Seva</option>
+    </select>
+    <div class="row">
+      <div><label>Date</label><input id="date" type="date"></div>
+      <div><label>UPI Ref / UTR <small>(optional)</small></label><input id="ref" inputmode="numeric" placeholder="from screenshot"></div>
+    </div>
+    <label>Donor WhatsApp number <small>(optional)</small></label>
+    <input id="phone" type="tel" inputmode="tel" placeholder="10-digit mobile number">
+    <label>Receipt No.</label>
+    <input id="no">
+    <p class="hint">The receipt number goes up by one each time you save. It is remembered only on this phone.</p>
+
+    <button class="btn btn-wa" id="shareBtn" type="button">Send receipt on WhatsApp</button>
+    <button class="btn btn-s" id="dlBtn" type="button">Download receipt image</button>
+  </section>
+
+  <section>
+    <div class="card preview">
+      <h2>Receipt preview</h2>
+      <canvas id="cv" width="1080" height="1560" aria-label="Receipt preview"></canvas>
+    </div>
+    <div class="card log">
+      <h2>Receipts made on this phone</h2>
+      <table><thead><tr><th>No.</th><th>Date</th><th>Name</th><th>₹</th></tr></thead><tbody id="logBody"></tbody></table>
+      <button class="btn btn-o btn-sm" id="csvBtn" type="button">Download list (Excel/CSV)</button>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v===null ? d : JSON.parse(v); }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  function toast(m){ var t=$("toast"); t.textContent=m; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(function(){t.classList.remove("show");},2600); }
+
+  /* defaults */
+  var today = new Date(); $("date").value = today.toISOString().slice(0,10);
+  var yr = today.getFullYear();
+  function nextNo(){ var n = store.get("lsg-counter", 0) + 1; return "LSG-" + yr + "-" + String(n).padStart(4,"0"); }
+  $("no").value = nextNo();
+
+  /* parse donor's WhatsApp message sent from the website */
+  $("fillBtn").addEventListener("click", function(){
+    var t = $("paste").value; if(!t.trim()){ toast("Paste the message first"); return; }
+    var m;
+    if((m = t.match(/donated\s*₹\s*([\d,]+)/i))) $("amount").value = m[1].replace(/,/g,"");
+    if((m = t.match(/My name\s*:\s*(.+)/i)) && m[1].trim()) $("name").value = m[1].trim();
+    if((m = t.match(/Place\s*:\s*(.+)/i)) && m[1].trim()) $("place").value = m[1].trim();
+    if((m = t.match(/for:\s*([^\n.]+)/i))){
+      var f = m[1].toLowerCase(), opts = $("seva").options, pick = null;
+      var keys = ["daily","weekly","monthly","yearly","kutchi","gothumai","karukka","punnaku","vaikol","meichal"];
+      keys.forEach(function(k, i){ if(!pick && f.indexOf(k) > -1) pick = i; });
+      $("seva").selectedIndex = pick === null ? opts.length-1 : pick;
+    }
+    draw(); toast("Filled ✓ — please check the details");
+  });
+
+  /* amount in words (Indian system) */
+  var ones=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+  var tens=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+  function two(n){ return n<20 ? ones[n] : tens[Math.floor(n/10)] + (n%10 ? " " + ones[n%10] : ""); }
+  function three(n){ var h=Math.floor(n/100), r=n%100; return (h ? ones[h]+" Hundred"+(r?" ":"") : "") + (r ? two(r) : ""); }
+  function words(n){
+    n = Math.floor(n); if(!n) return "Zero";
+    var parts=[], cr=Math.floor(n/1e7); n%=1e7; var lk=Math.floor(n/1e5); n%=1e5; var th=Math.floor(n/1e3); n%=1e3;
+    if(cr) parts.push(words(cr)+" Crore"); if(lk) parts.push(two(lk)+" Lakh"); if(th) parts.push(two(th)+" Thousand"); if(n) parts.push(three(n));
+    return parts.join(" ");
+  }
+  var inr = function(n){ return "₹" + Number(n||0).toLocaleString("en-IN"); };
+  function fmtDate(v){ if(!v) return ""; var d=new Date(v+"T00:00:00"); return d.toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}); }
+
+  /* drawing */
+  var cv=$("cv"), ctx=cv.getContext("2d"), W=cv.width, H=cv.height;
+  var C={maroon:"#7a1c1c",saffron:"#e2731b",gold:"#f2b33d",cream:"#fbf4e6",ink:"#2a1a12",muted:"#6b5546",red:"#b3261e",sand:"#ead8b6"};
+  function txt(s,x,y,font,color,align){ ctx.font=font; ctx.fillStyle=color; ctx.textAlign=align||"center"; ctx.fillText(s,x,y); }
+  function fit(s,font,max){ ctx.font=font; var size=parseInt(font.match(/(\d+)px/)[1],10); while(ctx.measureText(s).width>max && size>18){ size-=2; font=font.replace(/\d+px/,size+"px"); ctx.font=font; } return font; }
+  function emblem(cx,cy,r){
+    ctx.save(); ctx.translate(cx-r,cy-r); ctx.scale(r/32,r/32);
+    ctx.beginPath(); ctx.arc(32,32,30,0,Math.PI*2); ctx.fillStyle=C.maroon; ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle=C.gold; ctx.stroke();
+    ctx.fillStyle=C.gold;
+    ctx.fill(new Path2D("M32 13c-6.5 8.5-6.5 17 0 25 6.5-8 6.5-16.5 0-25zM13 31c8.5-2 15 .5 19 8.5-8.5 2-15-.5-19-8.5zm38 0c-8.5-2-15 .5-19 8.5 8.5 2 15-.5 19-8.5z"));
+    ctx.beginPath(); ctx.arc(32,47,3.2,0,Math.PI*2); ctx.fill(); ctx.restore();
+  }
+  function line(y,x1,x2,color,w){ ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.strokeStyle=color; ctx.lineWidth=w||2; ctx.stroke(); }
+
+  function draw(){
+    var v = {
+      name: $("name").value.trim() || "—", place: $("place").value.trim(),
+      amt: Number($("amount").value)||0, seva: $("seva").value, date: fmtDate($("date").value),
+      ref: $("ref").value.trim(), no: $("no").value.trim()
+    };
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle=C.cream; ctx.fillRect(0,0,W,H);
+    // temple stripes top & bottom
+    for(var x=0;x<W;x+=60){ ctx.fillStyle=C.red; ctx.fillRect(x,0,30,26); ctx.fillRect(x,H-26,30,26); ctx.fillStyle="#fff"; ctx.fillRect(x+30,0,30,26); ctx.fillRect(x+30,H-26,30,26); }
+    // frame
+    ctx.strokeStyle=C.maroon; ctx.lineWidth=6; ctx.strokeRect(40,60,W-80,H-120);
+    ctx.strokeStyle=C.gold; ctx.lineWidth=2; ctx.strokeRect(54,74,W-108,H-148);
+
+    emblem(W/2,150,52);
+    txt("॥ गावो विश्वस्य मातरः ॥",W/2,248,'34px "Tiro Devanagari Sanskrit", serif',C.saffron);
+    txt("Lokah Samasta Sukhino Bhavantu Goshala",W/2,312,fit("Lokah Samasta Sukhino Bhavantu Goshala",'700 54px "Cormorant Garamond", serif',W-160),C.maroon);
+    txt("லோகா சமஸ்தா சுகினோ பவந்து கோசாலை",W/2,360,'600 30px "Noto Sans Tamil", sans-serif',C.maroon);
+    txt("Padhur Gramam (Agraharam), Kallakurichi District, Tamil Nadu",W/2,404,'500 26px "Mukta", sans-serif',C.muted);
+    line(440,120,W-120,C.sand,2);
+
+    // title pill
+    ctx.fillStyle=C.maroon; var pw=520, ph=66, px=(W-pw)/2, py=470;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(px,py,pw,ph,33) : ctx.rect(px,py,pw,ph); ctx.fill();
+    txt("DONATION RECEIPT · நன்கொடை ரசீது",W/2,py+44,'700 28px "Mukta", "Noto Sans Tamil", sans-serif',"#fff");
+
+    txt("Receipt No: "+v.no,110,590,'600 28px "Mukta", sans-serif',C.ink,"left");
+    txt("Date: "+v.date,W-110,590,'600 28px "Mukta", sans-serif',C.ink,"right");
+
+    var y=670, L=110;
+    txt("Received with gratitude from",L,y,'500 28px "Mukta", sans-serif',C.muted,"left");
+    txt(v.name,L,y+58,fit(v.name,'700 50px "Cormorant Garamond", serif',W-220),C.ink,"left");
+    if(v.place) txt(v.place,L,y+100,'500 28px "Mukta", "Noto Sans Tamil", sans-serif',C.muted,"left");
+    line(y+122,L,W-110,C.sand,2);
+
+    y=850;
+    txt("the sum of",L,y,'500 28px "Mukta", sans-serif',C.muted,"left");
+    txt(inr(v.amt),L,y+70,'700 76px "Cormorant Garamond", serif',C.maroon,"left");
+    var w = "Rupees " + words(v.amt) + " Only";
+    txt(w,L,y+116,fit(w,'italic 500 28px "Mukta", sans-serif',W-220),C.ink,"left");
+    line(y+140,L,W-110,C.sand,2);
+
+    y=1030;
+    txt("towards",L,y,'500 28px "Mukta", sans-serif',C.muted,"left");
+    txt(v.seva,L,y+48,fit(v.seva,'700 36px "Mukta", sans-serif',W-220),C.ink,"left");
+    txt("Paid via UPI" + (v.ref ? "  ·  Ref: " + v.ref : ""),L,y+92,'500 26px "Mukta", sans-serif',C.muted,"left");
+
+    // blessing + signature
+    line(1160,L,W-110,C.sand,2);
+    txt("May Gau Mata bless you and your family.",W/2,1212,'italic 500 28px "Mukta", sans-serif',C.saffron);
+    txt("கோமாதா உங்களையும் உங்கள் குடும்பத்தையும் ஆசீர்வதிக்கட்டும்.",W/2,1254,fit("கோமாதா உங்களையும் உங்கள் குடும்பத்தையும் ஆசீர்வதிக்கட்டும்.",'500 26px "Noto Sans Tamil", sans-serif',W-220),C.saffron);
+    txt("With folded hands,",W-120,1306,'500 24px "Mukta", sans-serif',C.muted,"right");
+    txt("Sathya & Kalyani",W-120,1372,fit("Sathya & Kalyani",'64px "Great Vibes", cursive',420),C.maroon,"right");
+    line(1392,W-480,W-120,C.maroon,2);
+    txt("Sathyanarayanan & Kalyani",W-120,1426,'600 24px "Mukta", sans-serif',C.ink,"right");
+    txt("📞 94433 76536 · 99430 75441",L,1426,'500 24px "Mukta", sans-serif',C.muted,"left");
+    txt("This is an acknowledgement of your donation.",W/2,1474,'400 20px "Mukta", sans-serif',"#9a8574");
+  }
+
+  ["name","place","amount","seva","date","ref","no"].forEach(function(id){ $(id).addEventListener("input", draw); $(id).addEventListener("change", draw); });
+
+  /* save to local list */
+  function record(){
+    var v = { no:$("no").value.trim(), date:$("date").value, name:$("name").value.trim(), place:$("place").value.trim(), amt:Number($("amount").value)||0, seva:$("seva").value, ref:$("ref").value.trim() };
+    var log = store.get("lsg-log", []);
+    if(!log.some(function(r){ return r.no===v.no; })){
+      log.unshift(v); store.set("lsg-log", log);
+      var m = v.no.match(/(\d+)$/); if(m) store.set("lsg-counter", Math.max(store.get("lsg-counter",0), parseInt(m[1],10)));
+    }
+    renderLog();
+  }
+  function renderLog(){
+    var log = store.get("lsg-log", []), tb=$("logBody"); tb.innerHTML="";
+    log.slice(0,30).forEach(function(r){
+      var tr=document.createElement("tr");
+      [r.no, fmtDate(r.date), r.name, Number(r.amt).toLocaleString("en-IN")].forEach(function(c){ var td=document.createElement("td"); td.textContent=c; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+    if(!log.length) tb.innerHTML='<tr><td colspan="4" style="color:#9a8574">No receipts yet</td></tr>';
+  }
+  function resetForNext(){ ["name","place","amount","ref","phone","paste"].forEach(function(id){ $(id).value=""; }); $("no").value=nextNo(); draw(); }
+
+  function valid(){
+    if(!$("name").value.trim()){ toast("Enter donor name"); $("name").focus(); return false; }
+    if(!(Number($("amount").value)>0)){ toast("Enter amount"); $("amount").focus(); return false; }
+    return true;
+  }
+  function fileName(){ return "Receipt-" + $("no").value.trim() + ".png"; }
+  function getBlob(){ return new Promise(function(res){ cv.toBlob(res,"image/png"); }); }
+  function caption(){
+    return "Namaskaram " + $("name").value.trim() + " 🙏\nThank you for your donation of " + inr($("amount").value) + " to Lokah Samasta Sukhino Bhavantu Goshala towards " + $("seva").value + ".\nReceipt No: " + $("no").value.trim() + "\n\nMay Gau Mata bless you and your family.\n— Sathya & Kalyani";
+  }
+
+  $("shareBtn").addEventListener("click", async function(){
+    if(!valid()) return;
+    await fontsReady; draw();
+    var blob = await getBlob(), file = new File([blob], fileName(), {type:"image/png"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      try{ await navigator.share({files:[file], text:caption()}); record(); toast("Saved ✓"); resetForNext(); }
+      catch(e){ if(e && e.name!=="AbortError") toast("Could not share — use Download"); }
+    } else {
+      download(blob); record();
+      var ph = $("phone").value.replace(/\D/g,"").slice(-10);
+      var url = "https://api.whatsapp.com/send?" + (ph.length===10 ? "phone=91"+ph+"&" : "") + "text=" + encodeURIComponent(caption());
+      window.open(url, "_blank");
+      toast("Image downloaded — attach it in WhatsApp");
+    }
+  });
+  function download(blob){ var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=fileName(); document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href);},2000); }
+  $("dlBtn").addEventListener("click", async function(){ if(!valid()) return; await fontsReady; draw(); download(await getBlob()); record(); toast("Downloaded ✓"); });
+
+  $("csvBtn").addEventListener("click", function(){
+    var log = store.get("lsg-log", []); if(!log.length){ toast("No receipts yet"); return; }
+    var esc = function(s){ s=String(s==null?"":s); return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; };
+    var rows = [["Receipt No","Date","Name","Place","Amount","Seva","UPI Ref"]].concat(log.map(function(r){ return [r.no,r.date,r.name,r.place,r.amt,r.seva,r.ref]; }));
+    var blob = new Blob(["﻿"+rows.map(function(r){ return r.map(esc).join(","); }).join("\n")], {type:"text/csv"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="goshala-receipts.csv"; a.click();
+  });
+
+  var fontsReady = Promise.all([
+    '700 54px "Cormorant Garamond"','600 30px "Noto Sans Tamil"','34px "Tiro Devanagari Sanskrit"','64px "Great Vibes"','500 28px "Mukta"','700 36px "Mukta"'
+  ].map(function(f){ return document.fonts ? document.fonts.load(f).catch(function(){}) : null; })).then(function(){ return document.fonts && document.fonts.ready; });
+  draw(); fontsReady.then(draw); renderLog();
+})();
+</script>
+</body>
+</html>
