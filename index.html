@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lokah Samasta Sukhino Bhavantu Goshala · Padhur</title>
+<meta name="description" content="A home for Gau Mata in Padhur village, Kallakurichi district, Tamil Nadu. Started with one cow, Gajalakshmi — now 8 native cows and 10 calves. Donate daily, monthly or yearly towards their food and care.">
+<meta property="og:title" content="Lokah Samasta Sukhino Bhavantu Goshala · Padhur">
+<meta property="og:description" content="From one cow, Gajalakshmi, to 8 native cows and 10 calves. Feed Gau Mata for a day — ₹1,167.">
+<meta property="og:image" content="hero.jpg">
+<meta name="theme-color" content="#7a1c1c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%237a1c1c'/%3E%3Cpath d='M32 14c-6 8-6 16 0 24 6-8 6-16 0-24zM14 32c8-2 14 0 18 8-8 2-14 0-18-8zm36 0c-8-2-14 0-18 8 8 2 14 0 18-8z' fill='%23f2b33d'/%3E%3Ccircle cx='32' cy='46' r='3' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7a1c1c; --maroon-d:#561212; --kumkum:#b3261e; --saffron:#e2731b; --turmeric:#f2b33d;
+  --cream:#fbf4e6; --cream-2:#f5e9d2; --sand:#ead8b6; --ink:#2a1a12; --muted:#6b5546; --white:#fffdf8;
+  --green:#1f7a44; --wa:#1fa855;
+  --radius:18px; --shadow:0 10px 30px rgba(74,30,10,.12); --shadow-lg:0 24px 60px rgba(74,30,10,.22);
+  --f-head:"Cormorant Garamond",Georgia,serif; --f-body:"Mukta","Noto Sans Tamil",system-ui,sans-serif;
+  --f-ta:"Noto Sans Tamil","Mukta",sans-serif; --f-sa:"Tiro Devanagari Sanskrit",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+section,footer,.sloka-band{overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ta{font-family:var(--f-ta)}
+.sa{font-family:var(--f-sa)}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+
+/* language modes */
+body[data-lang="en"] .ta:not(.keep){display:none!important}
+body[data-lang="ta"] .en:not(.keep){display:none!important}
+body[data-lang="both"] .ta.sub{opacity:.85}
+
+/* temple stripe motif (matches the goshala walls) */
+.stripes{height:14px;background:repeating-linear-gradient(90deg,var(--kumkum) 0 22px,var(--white) 22px 44px)}
+.divider{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--saffron);margin:6px auto 14px}
+.divider::before,.divider::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--saffron))}
+.divider::after{transform:scaleX(-1)}
+.divider svg{width:26px;height:26px}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+header.solid{background:rgba(251,244,230,.96);backdrop-filter:blur(8px);box-shadow:0 2px 18px rgba(0,0,0,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--f-head);font-weight:700;font-size:1.25rem;line-height:1.05}
+header.solid .brand{color:var(--maroon)}
+.brand svg{width:38px;height:38px;flex:none}
+.brand small{display:block;font-family:var(--f-body);font-weight:500;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.links{display:flex;gap:22px;align-items:center}
+.links a{color:#fff;text-decoration:none;font-weight:500;font-size:.98rem}
+header.solid .links a{color:var(--ink)}
+.links a:hover{color:var(--turmeric)}
+.lang{display:flex;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px}
+header.solid .lang{background:var(--cream-2);border-color:var(--sand)}
+.lang button{border:0;background:none;color:#fff;font:600 .8rem var(--f-body);padding:5px 10px;border-radius:999px;cursor:pointer}
+header.solid .lang button{color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--turmeric);color:var(--ink)!important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font:600 1rem var(--f-body);padding:13px 24px;border-radius:999px;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-saffron{background:linear-gradient(135deg,var(--saffron),#c85a0c);color:#fff;box-shadow:0 8px 22px rgba(226,115,27,.35)}
+.btn-saffron:hover{box-shadow:0 12px 28px rgba(226,115,27,.5)}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.7)}
+.btn-maroon{background:var(--maroon);color:#fff}
+.btn-maroon:hover{background:var(--maroon-d)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-outline{background:transparent;border:1.5px solid var(--maroon);color:var(--maroon)}
+.btn svg{width:20px;height:20px}
+.nav .btn{padding:9px 18px;font-size:.92rem}
+@media (max-width:860px){.links a:not(.btn){display:none}.links{gap:8px}}
+@media (max-width:480px){
+  .nav{gap:6px}
+  .brand{gap:7px;font-size:1.02rem;white-space:nowrap}
+  .brand svg{width:32px;height:32px}
+  .brand small{font-size:.58rem;letter-spacing:.08em}
+  .lang{padding:2px}
+  .lang button{padding:4px 7px;font-size:.72rem}
+  .nav .btn{padding:7px 12px;font-size:.82rem}
+}
+@media (max-width:380px){.brand{font-size:.92rem}.brand svg{width:28px;height:28px}.lang button{padding:4px 5px}.nav .btn{padding:7px 10px}}
+@media (max-width:340px){.lang button[data-l="en"]{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;color:#fff;padding:110px 0 70px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url(hero.jpg) center/cover;transform:scale(1.06);animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{to{transform:scale(1.16) translate(-1.5%,-1%)}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(40,12,4,.45),rgba(30,8,2,.82) 75%),linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,rgba(50,12,4,.6))}
+.hero-inner{position:relative;z-index:2;max-width:880px;padding:0 8px}
+.om{font-family:var(--f-sa);font-size:2.6rem;color:var(--turmeric);line-height:1;text-shadow:0 0 30px rgba(242,179,61,.6)}
+.hero .sloka-top{font-family:var(--f-sa);font-size:clamp(1.3rem,3.6vw,2rem);color:#ffe6b0;margin:10px 0 4px}
+.hero .sloka-ta{color:#ffe6b0;font-size:clamp(.95rem,2.6vw,1.15rem);font-weight:500;margin-bottom:6px}
+.hero .sloka-mean{font-size:.95rem;opacity:.9;font-style:italic}
+.hero h1{font-family:var(--f-head);font-weight:700;font-size:clamp(2.3rem,6.4vw,4.6rem);line-height:1.02;margin:18px 0 6px;letter-spacing:.01em;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.hero h1 em{display:block;font-style:normal;color:var(--turmeric);font-size:.62em;letter-spacing:.24em;text-transform:uppercase;margin-top:8px}
+.hero .ta-name{font-size:clamp(1.05rem,2.6vw,1.45rem);font-weight:600;color:#ffe6b0}
+.place{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:.95rem}
+.place svg{width:16px;height:16px}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.stats{display:flex;justify-content:center;gap:clamp(18px,5vw,56px);margin-top:44px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--f-head);font-size:clamp(2.3rem,6vw,3.3rem);line-height:1;color:var(--turmeric)}
+.stat span{font-size:.9rem;opacity:.92;display:block}
+.stat span.ta{font-size:.82rem}
+.scroll-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:2;opacity:.8;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,8px)}}
+
+/* sloka band */
+.sloka-band{background:var(--maroon);color:#fff;text-align:center;padding:46px 0;position:relative;overflow:hidden}
+.sloka-band::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 50%,rgba(242,179,61,.18),transparent 40%),radial-gradient(circle at 85% 50%,rgba(242,179,61,.14),transparent 40%)}
+.sloka-band .s{position:relative;font-family:var(--f-sa);font-size:clamp(1.5rem,4.4vw,2.4rem);color:var(--turmeric);line-height:1.5}
+.sloka-band .t{position:relative;margin-top:6px;font-style:italic;opacity:.85;font-size:.95rem}
+.sloka-band .m{position:relative;margin-top:8px;font-size:1.05rem}
+.sloka-band .m.ta{font-size:.98rem}
+
+/* sections */
+section{padding:84px 0}
+.eyebrow{text-align:center;color:var(--saffron);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem}
+.eyebrow.ta{letter-spacing:.04em;text-transform:none;font-size:.9rem}
+h2{font-family:var(--f-head);font-weight:700;color:var(--maroon);text-align:center;font-size:clamp(2rem,4.6vw,3rem);line-height:1.1;margin-top:6px}
+h2 + .ta.h2t{display:block;text-align:center;color:var(--maroon);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.3rem);margin-top:6px}
+.lead{max-width:680px;margin:14px auto 0;text-align:center;color:var(--muted)}
+
+/* gallery slider */
+.gallery{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+.slider{position:relative;margin-top:36px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:#1b0e08}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;position:relative;aspect-ratio:16/9}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide figcaption{position:absolute;inset:auto 0 0;padding:40px 22px 46px;color:#fff;background:linear-gradient(transparent,rgba(20,8,2,.82));font-size:1.05rem;font-weight:500}
+.slide figcaption .ta{display:block;font-size:.92rem;opacity:.9;font-weight:400}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,253,248,.92);color:var(--maroon);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.arrow:hover{background:var(--turmeric)}
+.arrow svg{width:22px;height:22px}
+.arrow.prev{left:14px}.arrow.next{right:14px}
+.dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:3}
+.dots button{width:9px;height:9px;border-radius:999px;border:0;background:rgba(255,255,255,.55);cursor:pointer;transition:width .3s,background .3s;padding:0}
+.dots button[aria-current="true"]{width:26px;background:var(--turmeric)}
+.counter{position:absolute;top:14px;right:14px;z-index:3;background:rgba(0,0,0,.45);color:#fff;font-size:.85rem;padding:3px 12px;border-radius:999px}
+.swipe-hint{text-align:center;color:var(--muted);font-size:.9rem;margin-top:12px}
+@media (max-width:640px){.slide{aspect-ratio:4/3.4}.arrow{width:40px;height:40px}.slide figcaption{font-size:.95rem;padding:30px 16px 40px}}
+
+/* namaskaram / founders */
+.founders{background:var(--white);position:relative}
+.f-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;margin-top:40px}
+.portrait{position:relative}
+.portrait .frame{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:8px solid #fff;outline:2px solid var(--turmeric);outline-offset:6px}
+.portrait img{width:100%;aspect-ratio:1260/922;object-fit:cover}
+.portrait .tag{position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);background:var(--maroon);color:#fff;border-radius:999px;padding:9px 22px;white-space:nowrap;max-width:94%;text-align:center;font-weight:600;box-shadow:var(--shadow);font-size:.98rem}
+.portrait .tag .ta{font-size:.85rem;opacity:.9;margin-left:6px}
+.letter{position:relative}
+.letter .greet{font-family:var(--f-head);font-style:italic;font-weight:600;color:var(--maroon);font-size:clamp(1.5rem,3.2vw,2rem);line-height:1.2}
+.letter .greet-ta{color:var(--maroon);font-weight:600;margin-top:2px}
+.letter .greet-m{color:var(--muted);font-size:.95rem;margin:4px 0 18px}
+.letter p{margin-bottom:12px}
+.letter p.ta{color:#4a3528;font-size:.98rem;margin-top:-4px;margin-bottom:16px;padding-left:14px;border-left:3px solid var(--sand)}
+body[data-lang="ta"] .letter p.ta{padding-left:0;border:0;color:var(--ink);font-size:1rem}
+.sign{margin-top:22px;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sign .with{color:var(--muted);font-size:.95rem}
+.sign .script{font-family:"Great Vibes",cursive;font-size:clamp(2.3rem,5vw,3rem);color:var(--maroon);line-height:1}
+.sign .ta-sign{font-weight:600;color:var(--maroon)}
+.journey{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:70px}
+.step{background:var(--cream);border:1px solid var(--sand);border-radius:var(--radius);padding:24px;text-align:center;position:relative}
+.step b{display:block;font-family:var(--f-head);font-size:2.6rem;color:var(--saffron);line-height:1}
+.step h3{font-family:var(--f-head);color:var(--maroon);font-size:1.4rem;margin-top:6px}
+.step p{color:var(--muted);font-size:.95rem}
+@media (max-width:560px){.portrait .tag{white-space:normal;border-radius:16px;width:max-content;line-height:1.3}.portrait .tag .ta{display:block;margin:0}}
+@media (max-width:860px){.f-grid{grid-template-columns:1fr;gap:56px}.journey{grid-template-columns:1fr}}
+
+/* care / sloka card */
+.blessing{background:linear-gradient(135deg,var(--cream-2),#f8e2bf);text-align:center}
+.sloka-card{max-width:820px;margin:0 auto;background:var(--white);border-radius:24px;padding:40px 28px;box-shadow:var(--shadow);border:1px solid var(--sand);position:relative}
+.sloka-card::before,.sloka-card::after{content:"❁";position:absolute;top:16px;color:var(--turmeric);font-size:1.4rem}
+.sloka-card::before{left:20px}.sloka-card::after{right:20px}
+.sloka-card .dev{font-family:var(--f-sa);font-size:clamp(1.25rem,3.4vw,1.75rem);color:var(--maroon);line-height:1.7}
+.sloka-card .tr{font-style:italic;color:var(--muted);margin-top:10px;font-size:.95rem}
+.sloka-card .tamil-script{margin-top:6px;color:#5a3b2a;font-size:.98rem}
+.sloka-card .mean{margin-top:16px;font-size:1.05rem}
+.sloka-card .mean.ta{font-size:.98rem;margin-top:4px}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.value{background:var(--white);border-radius:var(--radius);padding:22px 18px;border:1px solid var(--sand);text-align:left}
+.value .ic{width:46px;height:46px;border-radius:14px;background:var(--cream-2);display:grid;place-items:center;color:var(--saffron);margin-bottom:12px}
+.value .ic svg{width:26px;height:26px}
+.value h3{font-size:1.06rem;color:var(--maroon);line-height:1.3}
+.value p{font-size:.93rem;color:var(--muted);line-height:1.5;margin-top:4px}
+@media (max-width:900px){.values{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.values{grid-template-columns:1fr}}
+
+/* donate */
+.donate{background:var(--maroon);color:#fff;position:relative;overflow:hidden}
+.donate::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 10% 0%,rgba(242,179,61,.22),transparent 45%),radial-gradient(circle at 100% 100%,rgba(226,115,27,.25),transparent 45%)}
+.donate .wrap{position:relative}
+.donate h2,.donate h2 + .ta.h2t{color:#fff}
+.donate .eyebrow{color:var(--turmeric)}
+.donate .lead{color:#f3dcc6}
+.donate .sloka-mini{text-align:center;margin-top:18px}
+.donate .sloka-mini .dev{font-family:var(--f-sa);color:var(--turmeric);font-size:clamp(1.1rem,2.8vw,1.4rem);line-height:1.6}
+.donate .sloka-mini .m{font-size:.92rem;opacity:.85;font-style:italic}
+.receipt-note{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:26px auto 0;background:rgba(31,168,85,.16);border:1px solid rgba(31,168,85,.6);border-radius:999px;padding:10px 20px;width:fit-content;max-width:100%;font-weight:500;text-align:center}
+.receipt-note svg{width:22px;height:22px;color:#4fe08a;flex:none}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.plan{background:var(--white);color:var(--ink);border-radius:22px;padding:30px 24px 26px;text-align:center;position:relative;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;transition:transform .2s}
+.plan:hover{transform:translateY(-4px)}
+.plan.feat{background:linear-gradient(180deg,#fff6e3,#fff);outline:3px solid var(--turmeric)}
+.plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--turmeric);color:var(--ink);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:999px;white-space:nowrap}
+.plan h3{font-family:var(--f-head);font-size:1.7rem;color:var(--maroon);line-height:1.1}
+.plan h3 .ta{display:block;font-family:var(--f-ta);font-size:1rem;font-weight:600;margin-top:2px}
+.plan .amt{font-family:var(--f-head);font-weight:700;font-size:clamp(2.2rem,3vw,2.7rem);color:var(--ink);line-height:1;margin:14px 0 2px}
+.plan .per{color:var(--muted);font-size:.92rem}
+.plan ul{list-style:none;text-align:left;margin:18px 0 22px;display:grid;gap:7px;font-size:.95rem}
+.plan li{display:flex;gap:8px;align-items:flex-start}
+.plan li::before{content:"✓";color:var(--green);font-weight:700}
+.plan .btn{margin-top:auto;width:100%}
+@media (max-width:1100px){.plans{grid-template-columns:repeat(2,1fr);row-gap:30px}}
+@media (max-width:640px){.plans{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+
+.feed{margin-top:56px;background:var(--white);color:var(--ink);border-radius:24px;padding:30px clamp(16px,3vw,34px);box-shadow:var(--shadow-lg)}
+.feed h3{font-family:var(--f-head);font-size:1.8rem;color:var(--maroon);text-align:center;line-height:1.15}
+.feed h3 .ta{display:block;font-family:var(--f-ta);font-size:1.05rem;font-weight:600}
+.feed .note{text-align:center;color:var(--muted);font-size:.92rem;margin-top:4px}
+.feed-table{width:100%;border-collapse:collapse;margin-top:22px}
+.feed-table th{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:right;padding:10px 12px;border-bottom:2px solid var(--sand)}
+.feed-table th:first-child{text-align:left}
+.feed-table td{padding:14px 12px;border-bottom:1px solid #f0e4cc;text-align:right;vertical-align:middle}
+.feed-table td:first-child{text-align:left}
+.feed-table .item{display:flex;align-items:center;gap:12px}
+.feed-table .dot{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;font-size:1.25rem;background:var(--cream-2)}
+.feed-table .nm{font-weight:600;line-height:1.25}
+.feed-table .nm .ta{font-weight:600;color:var(--maroon)}
+.feed-table .desc{font-size:.85rem;color:var(--muted);font-weight:400}
+.feed-table .money{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.feed-table .money.d{color:var(--saffron);font-size:1.08rem}
+.feed-table tfoot td{font-weight:700;font-size:1.08rem;border-bottom:0;background:var(--cream);color:var(--maroon)}
+.feed-table tfoot td:first-child{border-radius:12px 0 0 12px}.feed-table tfoot td:last-child{border-radius:0 12px 12px 0}
+.mini{display:inline-flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.mini button{border:1.5px solid var(--saffron);background:#fff;color:#a8500c;border-radius:999px;font:600 .8rem var(--f-body);padding:5px 11px;cursor:pointer;white-space:nowrap}
+.mini button:hover{background:var(--saffron);color:#fff}
+.also{margin-top:16px;text-align:center;color:var(--muted);font-size:.92rem}
+@media (max-width:720px){
+  .feed-table thead{display:none}
+  .feed-table,.feed-table tbody,.feed-table tr,.feed-table td,.feed-table tfoot{display:block;width:100%}
+  .feed-table tr{border:1px solid #f0e4cc;border-radius:16px;padding:12px;margin-bottom:12px}
+  .feed-table td{border:0;padding:4px 0;text-align:left;display:flex;justify-content:space-between;align-items:center}
+  .feed-table td[data-l]::before{content:attr(data-l);color:var(--muted);font-size:.85rem;font-weight:500}
+  .feed-table td:first-child{margin-bottom:6px}
+  .feed-table tfoot tr{background:var(--cream);border:0}
+  .feed-table tfoot td{background:none}
+  .mini{justify-content:flex-start;margin-top:6px}
+}
+
+.custom{margin-top:30px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:22px;padding:24px}
+.custom h3{font-family:var(--f-head);font-size:1.6rem;line-height:1.1}
+.custom h3 .ta{display:block;font-family:var(--f-ta);font-size:1rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chips button{border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#fff;border-radius:999px;font:600 .95rem var(--f-body);padding:7px 15px;cursor:pointer}
+.chips button:hover,.chips button.on{background:var(--turmeric);color:var(--ink);border-color:var(--turmeric)}
+.amt-in{display:flex;gap:10px;align-items:center}
+.amt-in label{position:relative}
+.amt-in label::before{content:"₹";position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.amt-in input{width:150px;padding:13px 14px 13px 30px;border-radius:999px;border:0;font:600 1.05rem var(--f-body);color:var(--ink)}
+@media (max-width:720px){.custom{grid-template-columns:1fr}.amt-in{flex-wrap:wrap}.amt-in input{width:100%}.amt-in label{flex:1}}
+
+.upi-strip{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:var(--white);color:var(--ink);border-radius:22px;padding:22px}
+.upi-strip .qr{width:170px;height:170px;background:#fff;border-radius:14px;border:1px solid var(--sand);padding:8px;display:grid;place-items:center}
+.upi-strip .qr svg,.upi-strip .qr img{width:100%;height:100%}
+.upi-strip h3{font-family:var(--f-head);color:var(--maroon);font-size:1.6rem;line-height:1.1}
+.upi-strip h3 .ta{display:block;font-family:var(--f-ta);font-size:1rem}
+.upi-id{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--cream);border:1px dashed var(--saffron);border-radius:12px;padding:8px 12px;font-weight:600;word-break:break-all}
+.copy{border:0;background:var(--maroon);color:#fff;border-radius:8px;font:600 .8rem var(--f-body);padding:5px 10px;cursor:pointer;flex:none}
+.gpay-nums{margin-top:12px;display:grid;gap:4px;font-size:.95rem}
+.gpay-nums a{font-weight:600;color:var(--maroon);text-decoration:none}
+.bank{margin-top:22px;background:var(--white);color:var(--ink);border-radius:22px;padding:24px}
+.bank-head{display:flex;gap:16px;align-items:flex-start}
+.bank .ic{width:52px;height:52px;border-radius:14px;background:var(--cream-2);color:var(--maroon);display:grid;place-items:center;flex:none}
+.bank .ic svg{width:28px;height:28px}
+.bank h3{font-family:var(--f-head);color:var(--maroon);font-size:1.6rem;line-height:1.1}
+.bank h3 .ta{display:block;font-family:var(--f-ta);font-size:1rem}
+.bank .sub{color:var(--muted);font-size:.93rem;margin-top:4px}
+.bank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:18px}
+.bank-grid div{background:var(--cream);border:1px solid var(--sand);border-radius:14px;padding:10px 14px}
+.bank-grid dt{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.03em}
+.bank-grid dd{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:700;font-size:1.05rem;overflow-wrap:anywhere}
+.bank-grid dd span{white-space:nowrap}
+.bank-wa{margin-top:16px;width:100%;text-align:center;border-radius:18px}
+body[data-lang="both"] .bank-wa{flex-direction:column;gap:0;line-height:1.25}
+@media (max-width:640px){.upi-strip{grid-template-columns:1fr;text-align:center}.upi-strip .qr{margin:0 auto}}
+
+/* visit */
+.visit{background:var(--cream)}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.card{background:var(--white);border:1px solid var(--sand);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.card h3{font-family:var(--f-head);color:var(--maroon);font-size:1.5rem;line-height:1.15}
+.card h3 .ta{display:block;font-family:var(--f-ta);font-size:.98rem}
+.card p{color:var(--muted);margin-top:6px}
+.card .phone{font-size:1.25rem;font-weight:700;color:var(--ink);margin:8px 0 14px;letter-spacing:.02em}
+.card .row{display:flex;gap:8px;flex-wrap:wrap}
+.card .row .btn{padding:10px 16px;font-size:.92rem}
+@media (max-width:900px){.v-grid{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:#2a0f0a;color:#f2dcc8;text-align:center;padding:56px 0 110px}
+footer .dev{font-family:var(--f-sa);color:var(--turmeric);font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.8}
+footer .ta-line{color:#ffd88a;font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.8;margin-top:8px;font-weight:500}
+footer .tr{font-style:italic;opacity:.75;font-size:.92rem;margin-top:8px}
+footer .mean{margin-top:10px;max-width:720px;margin-inline:auto;font-size:.98rem}
+footer .fine{margin-top:30px;font-size:.85rem;opacity:.6}
+footer .sig{font-family:"Great Vibes",cursive;font-size:2.2rem;color:#fff;margin-top:20px}
+
+/* sticky mobile donate */
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:8px;transform:translateY(130%);transition:transform .35s}
+.sticky.show{transform:none}
+.sticky .btn{flex:1;padding:14px 12px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.sticky .btn-wa{flex:0 0 54px;padding:0}
+@media (max-width:860px){.sticky{display:flex}}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(30,10,4,.65);backdrop-filter:blur(4px)}
+.modal.open{display:flex}
+.sheet{background:var(--white);border-radius:24px;width:min(460px,100%);max-height:calc(100svh - 32px);overflow:auto;padding:26px 22px 22px;position:relative;text-align:center;animation:pop .25s ease-out}
+@keyframes pop{from{transform:translateY(20px);opacity:0}}
+.sheet .x{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:0;background:var(--cream-2);cursor:pointer;font-size:1.3rem;color:var(--ink)}
+.sheet .for{color:var(--muted);font-size:.92rem;padding:0 30px}
+.sheet .big{font-family:var(--f-head);font-weight:700;font-size:3rem;color:var(--maroon);line-height:1.1;margin:4px 0}
+.sheet .qr{width:210px;height:210px;margin:12px auto;border:1px solid var(--sand);border-radius:16px;padding:10px;background:#fff}
+.sheet .qr svg{width:100%;height:100%}
+.sheet .steps{text-align:left;background:var(--cream);border-radius:16px;padding:14px 16px;margin-top:14px;font-size:.93rem;display:grid;gap:6px;counter-reset:s}
+.sheet .steps div{display:flex;gap:10px}
+.sheet .steps div::before{counter-increment:s;content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--maroon);color:#fff;font-size:.78rem;font-weight:700;display:grid;place-items:center;margin-top:2px}
+.sheet .btn{width:100%;margin-top:10px}
+.sheet .small{font-size:.82rem;color:var(--muted);margin-top:8px}
+.paywith{font-weight:600;color:var(--maroon);margin-top:6px}
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.app{display:flex;align-items:center;justify-content:center;height:52px;border-radius:14px;font:700 1.02rem var(--f-body);text-decoration:none;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.app:active{transform:scale(.97)}
+.app.gpay{background:#1a73e8}.app.phonepe{background:#5f259f}.app.paytm{background:#00baf2}
+.sheet #mPay{margin-top:8px;padding:10px}
+.done-ic{width:76px;height:76px;border-radius:50%;background:#e7f6ec;color:var(--green);display:grid;place-items:center;margin:10px auto 6px}
+.done-ic svg{width:40px;height:40px}
+.done-t{font-family:var(--f-head);font-weight:700;font-size:1.7rem;color:var(--maroon)}
+.done-wa{padding:18px 16px!important;font-size:1.08rem!important;margin-top:18px!important;flex-direction:row!important;text-align:left;line-height:1.3;border-radius:18px!important}
+.done-wa svg{width:30px!important;height:30px!important;flex:none}
+.done-wa .ta{display:block;font-size:.85em;font-weight:500}
+.done-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+.linkbtn{background:none;border:0;color:var(--maroon);text-decoration:underline;font:500 .9rem var(--f-body);margin-top:14px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:.92rem;opacity:0;transition:.3s;z-index:200;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
+
+/* mobile polish */
+.btn .ta{font-size:.88em}
+body[data-lang="both"] .hero-cta .btn,body[data-lang="both"] .sheet .btn-saffron,body[data-lang="both"] .plan .btn{flex-direction:column;gap:0;line-height:1.25}
+.receipt-note{border-radius:18px}
+.place{flex-wrap:wrap;justify-content:center}
+@media (max-width:560px){
+  .place{flex-direction:column;gap:2px;border-radius:16px}
+  .place svg{display:none}
+  .stats{gap:22px;flex-wrap:nowrap}
+  .stat span{font-size:.8rem}
+  .hero-cta .btn{width:100%}
+  .upi-id{font-size:.88rem}
+  .sheet .upi-id{font-size:.8rem}
+}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero-bg{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body data-lang="both">
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a1c1c" stroke="#f2b33d" stroke-width="2"/><path d="M32 13c-6.5 8.5-6.5 17 0 25 6.5-8 6.5-16.5 0-25zM13 31c8.5-2 15 .5 19 8.5-8.5 2-15-.5-19-8.5zm38 0c-8.5-2-15 .5-19 8.5 8.5 2 15-.5 19-8.5z" fill="#f2b33d"/><circle cx="32" cy="47" r="3.2" fill="#f2b33d"/></svg>
+      <span><span class="full">Lokah Samasta</span><small>Goshala · Padhur</small></span>
+    </a>
+    <nav class="links">
+      <a href="#gallery">Gallery</a>
+      <a href="#namaskaram">Our Story</a>
+      <a href="#donate">Donate</a>
+      <a href="#visit">Visit</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-l="both" aria-pressed="true">EN<span class="long">+</span>த</button>
+        <button data-l="en" aria-pressed="false">EN</button>
+        <button data-l="ta" aria-pressed="false">தமிழ்</button>
+      </div>
+      <a class="btn btn-saffron" href="#donate">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" role="img" aria-label="Inside our goshala"></div>
+  <div class="hero-inner">
+    <div class="om">ॐ</div>
+    <p class="sloka-top">लोकाः समस्ताः सुखिनो भवन्तु</p>
+    <p class="sloka-ta ta keep">கோ ப்ராஹ்மணேப்யோ சுபமஸ்து நித்யம் லோகா: ஸமஸ்தா ஸுகிநோ பவந்து</p>
+    <p class="sloka-mean en">“May all beings everywhere be happy”</p>
+    <p class="sloka-mean ta">“உலகில் உள்ள அனைத்து உயிர்களும் இன்புற்று வாழட்டும்”</p>
+    <h1>Lokah Samasta Sukhino Bhavantu<em>Goshala</em></h1>
+    <p class="ta ta-name keep">லோகா சமஸ்தா சுகினோ பவந்து கோசாலை</p>
+    <div class="place">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      <span class="en">Padhur Gramam (Agraharam), Kallakurichi District, Tamil Nadu</span>
+      <span class="ta">பாதூர் கிராமம் (அக்ரஹாரம்), கள்ளக்குறிச்சி மாவட்டம், தமிழ்நாடு</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-saffron" href="#donate"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.1 0 3.4 1.1 4 2.2.6-1.1 1.9-2.2 4-2.2 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg><span class="en">Feed Gau Mata</span><span class="ta">கோமாதாவுக்கு உணவளிப்போம்</span></a>
+      <a class="btn btn-ghost" href="#gallery"><span class="en">See our cows</span><span class="ta">எங்கள் பசுக்கள்</span></a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="1">1</b><span class="en">where we began</span><span class="ta">தொடக்கம் — கஜலட்சுமி</span></div>
+      <div class="stat"><b data-count="8">8</b><span class="en">native cows</span><span class="ta">நாட்டுப் பசுக்கள்</span></div>
+      <div class="stat"><b data-count="10">10</b><span class="en">calves (kannukutty)</span><span class="ta">கன்றுக்குட்டிகள்</span></div>
+    </div>
+  </div>
+  <svg class="scroll-hint" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</section>
+<div class="stripes" aria-hidden="true"></div>
+
+<!-- SLOKA BAND -->
+<div class="sloka-band">
+  <div class="wrap">
+    <p class="s">गावो विश्वस्य मातरः</p>
+    <p class="t">Gāvo viśvasya mātaraḥ · காவோ விஶ்வஸ்ய மாதர:</p>
+    <p class="m en">Cows are the mothers of the whole world.</p>
+    <p class="m ta">பசுக்கள் இவ்வுலகம் அனைத்திற்கும் தாய்மார்கள்.</p>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow en">Our Family</p><p class="eyebrow ta">எங்கள் குடும்பம்</p>
+    <h2 class="en">Meet Our Gau Mata</h2>
+    <span class="ta h2t">எங்கள் கோமாதாக்களைச் சந்தியுங்கள்</span>
+    <div class="slider reveal" id="slider" aria-roledescription="carousel">
+      <span class="counter" id="counter">1 / 8</span>
+      <button class="arrow prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="arrow next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="track" id="track">
+        <figure class="slide"><img src="gallery-01.jpg" alt="A calf resting on straw"><figcaption><span class="en">Our little kannukutty resting on fresh straw</span><span class="ta">புதிய வைக்கோலில் ஓய்வெடுக்கும் எங்கள் கன்றுக்குட்டி</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-02.jpg" alt="Kangeyam cow with tall horns" loading="lazy"><figcaption><span class="en">Our majestic Kangeyam with her tall horns</span><span class="ta">உயர்ந்த கொம்புகளுடன் கம்பீரமான காங்கேயம்</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-03.jpg" alt="Cow beside stacked hay" loading="lazy"><figcaption><span class="en">Hay stocked so no one goes hungry</span><span class="ta">யாரும் பசியோடு இருக்கக் கூடாது என சேமித்த வைக்கோல்</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-04.jpg" alt="Young calf close-up" loading="lazy"><figcaption><span class="en">A young one — calm and curious</span><span class="ta">அமைதியும் ஆர்வமும் கொண்ட இளங்கன்று</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-05.jpg" alt="The goshala shed" loading="lazy"><figcaption><span class="en">A clean, airy shed built with love</span><span class="ta">அன்புடன் கட்டிய சுத்தமான, காற்றோட்டமான கொட்டகை</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-06.jpg" alt="Calves and cows" loading="lazy"><figcaption><span class="en">Calves and mothers, side by side</span><span class="ta">தாய்ப் பசுக்களுடன் கன்றுகள்</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-07.jpg" alt="Goshala hall with cows" loading="lazy"><figcaption><span class="en">Evening at the goshala</span><span class="ta">மாலை நேரக் கோசாலை</span></figcaption></figure>
+        <figure class="slide"><img src="gallery-08.jpg" alt="Herd in the shed" loading="lazy"><figcaption><span class="en">Our herd, together</span><span class="ta">ஒன்றாக எங்கள் பசுக் கூட்டம்</span></figcaption></figure>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <p class="swipe-hint"><span class="en">Swipe or tap the arrows to see more →</span> <span class="ta">மேலும் காண வலப்புறம் தள்ளுங்கள் →</span></p>
+  </div>
+</section>
+
+<!-- NAMASKARAM -->
+<section class="founders" id="namaskaram">
+  <div class="wrap">
+    <p class="eyebrow en">Namaskaram</p><p class="eyebrow ta">நமஸ்காரம்</p>
+    <h2 class="en">A Dream, Fulfilled by Gau Mata</h2>
+    <span class="ta h2t">கோமாதாவின் அருளால் நனவான கனவு</span>
+    <div class="f-grid">
+      <div class="portrait reveal">
+        <div class="frame"><img src="parents.jpg" alt="Sathyanarayanan and Yasodha greeting with namaskaram"></div>
+        <div class="tag">Sathyanarayanan &amp; Yasodha<span class="ta keep">சத்யநாராயணன் &amp; யசோதா</span></div>
+      </div>
+      <div class="letter reveal">
+        <p class="greet">Endaro Mahanubhavulu, Andariki Vandanamulu</p>
+        <p class="greet-ta ta keep">எந்தரோ மஹானுபாவுலு, அந்தரிகி வந்தனமுலு</p>
+        <p class="greet-m en">To every great soul who wishes to protect and serve Gau Mata — our humble namaskaram.</p>
+        <p class="greet-m ta">கோசம்ரக்ஷணை செய்ய விரும்பும் அனைத்து மகான்களுக்கும் எங்கள் பணிவான நமஸ்காரம்.</p>
+
+        <p class="en">Building a goshala and caring for cows with love and affection was my long-time dream. By the grace of Gau Mata, that dream is real today — and we wish to do this seva even better in the days ahead.</p>
+        <p class="ta">ஒரு கோசாலை அமைத்து, பசுக்களை அன்போடும் பாசத்தோடும் பராமரிக்க வேண்டும் என்பது என் நீண்ட நாள் கனவு. கோமாதாவின் அனுக்கிரஹத்தால் அந்தக் கனவு இன்று நனவாகியுள்ளது. இதை இன்னும் செவ்வனே செய்ய வேண்டும் என்று விரும்புகிறோம்.</p>
+
+        <p class="en">We began with just one cow — our beloved <b>Gajalakshmi</b>. Today our family has grown to <b>8 native cows</b>, including Kangeyam and Sindhi breeds, and <b>10 little calves</b>.</p>
+        <p class="ta">எங்கள் அன்புப் பசு <b>கஜலட்சுமி</b> என்ற ஒரே ஒரு பசுவுடன் தொடங்கினோம். இன்று காங்கேயம், சிந்தி போன்ற <b>8 நாட்டு இனப் பசுக்கள்</b> மற்றும் <b>10 கன்றுக்குட்டிகளுடன்</b> எங்கள் குடும்பம் வளர்ந்துள்ளது.</p>
+
+        <p class="en">Every cow here is a member of our family — fed every day, kept in a clean, airy shed, and taken out to graze by a caretaker who loves them.</p>
+        <p class="ta">இங்குள்ள ஒவ்வொரு பசுவும் எங்கள் குடும்ப உறுப்பினரே — தினமும் உணவளித்து, சுத்தமான காற்றோட்டமான கொட்டகையில் பராமரித்து, அன்பான பராமரிப்பாளர் மேய்ச்சலுக்கு அழைத்துச் செல்கிறார்.</p>
+
+        <p class="en">Serving Gau Mata is serving all the Devas. Come visit, feed them with your own hands and receive their blessings. Every rupee you give goes only to their food and care.</p>
+        <p class="ta">கோமாதா சேவையே அனைத்து தேவர்களுக்கும் செய்யும் சேவை. நேரில் வந்து, உங்கள் கைகளால் உணவளித்து, அவர்களின் ஆசியைப் பெற அன்புடன் அழைக்கிறோம். நீங்கள் தரும் ஒவ்வொரு ரூபாயும் அவர்களின் உணவுக்கும் பராமரிப்புக்கும் மட்டுமே.</p>
+
+        <div class="sign">
+          <div>
+            <div class="with"><span class="en">With folded hands,</span> <span class="ta">கூப்பிய கரங்களுடன்,</span></div>
+            <div class="script">Sathya &amp; Yasodha</div>
+            <div class="ta-sign ta keep">சத்யா &amp; யசோதா</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="journey">
+      <div class="step reveal"><b>1</b><h3 class="en">It began with Gajalakshmi</h3><h3 class="ta">கஜலட்சுமியுடன் தொடக்கம்</h3><p class="en">One cow, one dream.</p><p class="ta">ஒரு பசு, ஒரு கனவு.</p></div>
+      <div class="step reveal"><b>8</b><h3 class="en">Native cows today</h3><h3 class="ta">இன்று 8 நாட்டுப் பசுக்கள்</h3><p class="en">Kangeyam, Sindhi and other native breeds.</p><p class="ta">காங்கேயம், சிந்தி மற்றும் நாட்டு இனங்கள்.</p></div>
+      <div class="step reveal"><b>10</b><h3 class="en">Kannukutty</h3><h3 class="ta">கன்றுக்குட்டிகள்</h3><p class="en">Ten calves — and growing with your blessings.</p><p class="ta">பத்து கன்றுகள் — உங்கள் ஆசியுடன் வளர்கிறது.</p></div>
+    </div>
+  </div>
+</section>
+<div class="stripes" aria-hidden="true"></div>
+
+<!-- BLESSING + CARE -->
+<section class="blessing">
+  <div class="wrap">
+    <div class="sloka-card reveal">
+      <p class="dev">गावो ममाग्रतः सन्तु गावो मे सन्तु पृष्ठतः ।<br>गावो मे हृदये सन्तु गवां मध्ये वसाम्यहम् ॥</p>
+      <p class="tr">Gāvo mamāgrataḥ santu gāvo me santu pṛṣṭhataḥ, gāvo me hṛdaye santu gavāṃ madhye vasāmyaham</p>
+      <p class="tamil-script ta keep">காவோ மமாக்ரத: ஸந்து காவோ மே ஸந்து ப்ருஷ்டத: । காவோ மே ஹ்ருதயே ஸந்து கவாம் மத்யே வஸாம்யஹம் ॥</p>
+      <p class="mean en">May cows be before me, may cows be behind me, may cows dwell in my heart — I live in the midst of cows.</p>
+      <p class="mean ta">பசுக்கள் என் முன்னும் பின்னும் இருக்கட்டும்; பசுக்கள் என் இதயத்தில் வாழட்டும்; நான் பசுக்களின் நடுவே வாழ்கிறேன்.</p>
+    </div>
+
+    <div class="values">
+      <div class="value reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-4-3-8-7-8-11a8 8 0 0 1 16 0c0 4-4 8-8 11z"/><path d="M12 7v6M9 10h6"/></svg></div><h3 class="en">Fed every day</h3><h3 class="ta">தினமும் உணவு</h3><p class="en">Green fodder, bran, oil cake and straw.</p><p class="ta">பசுந்தீவனம், தவிடு, புண்ணாக்கு, வைக்கோல்.</p></div>
+      <div class="value reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div><h3 class="en">Clean, airy shelter</h3><h3 class="ta">சுத்தமான கொட்டகை</h3><p class="en">A spacious shed with light and fresh air.</p><p class="ta">வெளிச்சமும் காற்றோட்டமும் கொண்டது.</p></div>
+      <div class="value reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c2-6 6-9 8-9s6 3 8 9"/><circle cx="12" cy="6" r="3"/></svg></div><h3 class="en">Daily grazing</h3><h3 class="ta">தினசரி மேய்ச்சல்</h3><p class="en">A dedicated caretaker for all our cows.</p><p class="ta">அனைத்து பசுக்களுக்கும் ஒரு பராமரிப்பாளர்.</p></div>
+      <div class="value reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></div><h3 class="en">Native breeds</h3><h3 class="ta">நாட்டு இனங்கள்</h3><p class="en">Protecting our own Kangeyam &amp; Sindhi cows.</p><p class="ta">காங்கேயம், சிந்தி இனங்களைக் காப்போம்.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="donate" id="donate">
+  <div class="wrap">
+    <p class="eyebrow en">Go Seva</p><p class="eyebrow ta">கோ சேவை</p>
+    <h2 class="en">Feed Gau Mata With Us</h2>
+    <span class="ta h2t">எங்களுடன் கோமாதாவுக்கு உணவளியுங்கள்</span>
+    <div class="sloka-mini">
+      <p class="dev">सर्वदेवमये देवि सर्वदेवैरलङ्कृते । मातर्ममाभिलषितं सफलं कुरु नन्दिनि ॥</p>
+      <p class="m en">“O Mother in whom all the Devas reside — O Nandini, bless and fulfil my heart’s wishes.”</p>
+      <p class="m ta">“எல்லா தேவர்களும் உறையும் தாயே நந்தினி, என் மனவிருப்பங்களை நிறைவேற்றுவாயாக.”</p>
+    </div>
+    <p class="lead en">It costs <b style="color:#fff">₹1,167 a day</b> to feed and care for all 18 of our cows and calves. Sponsor a day, a week, a month or a whole year — or any amount from your heart.</p>
+    <p class="lead ta">எங்கள் 18 பசுக்களுக்கும் கன்றுகளுக்கும் உணவு மற்றும் பராமரிப்புக்கு <b style="color:#fff">ஒரு நாளுக்கு ₹1,167</b> ஆகிறது. ஒரு நாள், ஒரு வாரம், ஒரு மாதம் அல்லது ஒரு வருடம் — அல்லது உங்கள் மனம் விரும்பும் தொகையை வழங்குங்கள்.</p>
+
+    <div class="receipt-note">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+      <span class="en">Every donor receives a receipt on WhatsApp</span>
+      <span class="ta">நன்கொடை அளிக்கும் அனைவருக்கும் WhatsApp-இல் ரசீது அனுப்பப்படும்</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <h3><span class="en">Daily Seva</span><span class="ta">தினசரி சேவை</span></h3>
+        <div class="amt">₹1,167</div>
+        <div class="per"><span class="en">feeds all 18 for one day</span><span class="ta"> · 18 பசுக்களுக்கும் ஒரு நாள் உணவு</span></div>
+        <ul>
+          <li><span><span class="en">Green fodder, bran &amp; oil cake</span><span class="ta"> · தீவனம், தவிடு, புண்ணாக்கு</span></span></li>
+          <li><span><span class="en">Perfect for birthdays &amp; anniversaries</span><span class="ta"> · பிறந்தநாள், திருமண நாளுக்கு ஏற்றது</span></span></li>
+          <li><span><span class="en">WhatsApp receipt</span><span class="ta"> · WhatsApp ரசீது</span></span></li>
+        </ul>
+        <button class="btn btn-maroon" data-donate="1167" data-for="Daily Seva — feed all cows for 1 day" data-for-ta="தினசரி சேவை — ஒரு நாள் உணவு">
+          <span class="en">Donate ₹1,167</span><span class="ta">வழங்குக</span></button>
+      </div>
+      <div class="plan reveal">
+        <h3><span class="en">Weekly Seva</span><span class="ta">வாராந்திர சேவை</span></h3>
+        <div class="amt">₹10,000</div>
+        <div class="per"><span class="en">a full week of food &amp; care</span><span class="ta"> · ஒரு வார உணவு &amp; பராமரிப்பு</span></div>
+        <ul>
+          <li><span><span class="en">7 days of feed for all cows</span><span class="ta"> · 7 நாள் முழு தீவனம்</span></span></li>
+          <li><span><span class="en">Ideal for festivals &amp; family functions</span><span class="ta"> · பண்டிகை, குடும்ப விழாக்களுக்கு ஏற்றது</span></span></li>
+          <li><span><span class="en">WhatsApp receipt</span><span class="ta"> · WhatsApp ரசீது</span></span></li>
+        </ul>
+        <button class="btn btn-maroon" data-donate="10000" data-for="Weekly Seva — food and care for 1 week" data-for-ta="வாராந்திர சேவை — ஒரு வாரம்">
+          <span class="en">Donate ₹10,000</span><span class="ta">வழங்குக</span></button>
+      </div>
+      <div class="plan feat reveal">
+        <span class="badge">Most loved · சிறப்பு</span>
+        <h3><span class="en">Monthly Seva</span><span class="ta">மாதாந்திர சேவை</span></h3>
+        <div class="amt">₹35,000</div>
+        <div class="per"><span class="en">a full month of food &amp; care</span><span class="ta"> · ஒரு மாத உணவு &amp; பராமரிப்பு</span></div>
+        <ul>
+          <li><span><span class="en">All feed for 30 days</span><span class="ta"> · 30 நாள் முழு தீவனம்</span></span></li>
+          <li><span><span class="en">Caretaker's grazing wages</span><span class="ta"> · மேய்ச்சல் பராமரிப்பாளர் ஊதியம்</span></span></li>
+          <li><span><span class="en">WhatsApp receipt + photos</span><span class="ta"> · WhatsApp ரசீது + படங்கள்</span></span></li>
+        </ul>
+        <button class="btn btn-saffron" data-donate="35000" data-for="Monthly Seva — food and care for 1 month" data-for-ta="மாதாந்திர சேவை — ஒரு மாதம்">
+          <span class="en">Donate ₹35,000</span><span class="ta">வழங்குக</span></button>
+      </div>
+      <div class="plan reveal">
+        <h3><span class="en">Yearly Seva</span><span class="ta">வருடாந்திர சேவை</span></h3>
+        <div class="amt">₹4,20,000</div>
+        <div class="per"><span class="en">a whole year of blessings</span><span class="ta"> · ஒரு வருட முழு சேவை</span></div>
+        <ul>
+          <li><span><span class="en">12 months of feed &amp; care</span><span class="ta"> · 12 மாத உணவு &amp; பராமரிப்பு</span></span></li>
+          <li><span><span class="en">Special Go Puja in your family's name</span><span class="ta"> · உங்கள் குடும்பப் பெயரில் கோ பூஜை</span></span></li>
+          <li><span><span class="en">WhatsApp receipt</span><span class="ta"> · WhatsApp ரசீது</span></span></li>
+        </ul>
+        <button class="btn btn-maroon" data-donate="420000" data-for="Yearly Seva — food and care for 1 year" data-for-ta="வருடாந்திர சேவை — ஒரு வருடம்">
+          <span class="en">Donate ₹4,20,000</span><span class="ta">வழங்குக</span></button>
+      </div>
+    </div>
+
+    <div class="feed reveal" id="feed">
+      <h3><span class="en">What Our Cows Eat — and What It Costs</span><span class="ta">எங்கள் பசுக்களின் உணவும் செலவும்</span></h3>
+      <p class="note"><span class="en">Sponsor any one item for a day, a month or a year.</span> <span class="ta">ஏதேனும் ஒரு உணவை ஒரு நாள் / மாதம் / வருடத்திற்கு வழங்கலாம்.</span></p>
+      <table class="feed-table">
+        <thead><tr><th>Item · பொருள்</th><th>Per day · நாள்</th><th>Per month · மாதம்</th><th>Per year · வருடம்</th><th>Sponsor · வழங்குக</th></tr></thead>
+        <tbody id="feedBody"></tbody>
+        <tfoot><tr><td><span class="en">Total for all cows</span><span class="ta"> · மொத்தம்</span></td><td class="money" data-l="Per day · நாள்">₹1,167</td><td class="money" data-l="Per month · மாதம்">₹35,000</td><td class="money" data-l="Per year · வருடம்">₹4,20,000</td><td></td></tr></tfoot>
+      </table>
+          </div>
+
+    <div class="custom reveal">
+      <div>
+        <h3><span class="en">Give any amount from your heart</span><span class="ta">உங்கள் மனம் விரும்பும் தொகை</span></h3>
+        <div class="chips" id="chips">
+          <button data-v="101">₹101</button><button data-v="251">₹251</button><button data-v="501">₹501</button><button data-v="1001">₹1,001</button><button data-v="5001">₹5,001</button>
+        </div>
+      </div>
+      <div class="amt-in">
+        <label><input id="customAmt" type="number" inputmode="numeric" min="1" placeholder="Amount" aria-label="Amount in rupees"></label>
+        <button class="btn btn-saffron" id="customGo"><span class="en">Donate</span><span class="ta">வழங்குக</span></button>
+      </div>
+    </div>
+
+    <div class="upi-strip reveal">
+      <div class="qr" id="mainQr" aria-label="UPI QR code"></div>
+      <div>
+        <h3><span class="en">Scan &amp; pay with any UPI app</span><span class="ta">எந்த UPI செயலியிலும் ஸ்கேன் செய்து செலுத்துங்கள்</span></h3>
+        <p style="color:var(--muted);margin-top:4px">GPay · PhonePe · Paytm · BHIM</p>
+        <div class="upi-id"><span id="upiText">sakthikumark4151-1@okicici</span><button class="copy" data-copy="sakthikumark4151-1@okicici">Copy</button></div>
+        <div class="gpay-nums">
+          <div>GPay / PhonePe: <a href="tel:+919443376536">94433 76536</a> <span style="color:var(--muted)">(Sathyanarayanan)</span></div>
+          <div>GPay / PhonePe: <a href="tel:+919943075441">99430 75441</a> <span style="color:var(--muted)">(Yasodha)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bank reveal" id="bank">
+      <div class="bank-head">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></div>
+        <div>
+          <h3><span class="en">Bank Transfer — India &amp; Abroad</span><span class="ta">வங்கி பரிமாற்றம் — இந்தியா &amp; வெளிநாடு</span></h3>
+          <p class="sub"><span class="en">For NEFT / IMPS / RTGS, or international (SWIFT) transfers from outside India.</span> <span class="ta">NEFT / IMPS / RTGS அல்லது வெளிநாட்டிலிருந்து SWIFT மூலம் அனுப்பலாம்.</span></p>
+        </div>
+      </div>
+      <dl class="bank-grid">
+        <div><dt>Account name · பெயர்</dt><dd>SAKTHIKUMAR</dd></div>
+        <div><dt>Account number · கணக்கு எண்</dt><dd><span>500101010244776</span><button class="copy" data-copy="500101010244776">Copy</button></dd></div>
+        <div><dt>IFSC</dt><dd><span>CIUB0000055</span><button class="copy" data-copy="CIUB0000055">Copy</button></dd></div>
+        <div><dt>Bank · வங்கி</dt><dd>City Union Bank, Sengurichi Branch</dd></div>
+        <div><dt>SWIFT (from abroad)</dt><dd><span>CIUBIN5M</span><button class="copy" data-copy="CIUBIN5M">Copy</button></dd></div>
+      </dl>
+      <a class="btn btn-wa bank-wa" href="https://api.whatsapp.com/send?phone=919943075441&amp;text=Namaskaram%20%F0%9F%99%8F%0AI%20have%20transferred%20%E2%82%B9____%20to%20Lokah%20Samasta%20Sukhino%20Bhavantu%20Goshala%20by%20bank%20transfer.%0A%0AMy%20name%3A%20%0APlace%2FCountry%3A%20%0A%0AScreenshot%20attached.%20Kindly%20send%20my%20receipt." target="_blank" rel="noopener"><span class="en">After transfer — send confirmation on WhatsApp</span><span class="ta">பரிமாற்றத்திற்குப் பின் WhatsApp-இல் அனுப்புக</span></a>
+    </div>
+  </div>
+</section>
+<div class="stripes" aria-hidden="true"></div>
+
+<!-- VISIT / CONTACT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <p class="eyebrow en">Come, Visit</p><p class="eyebrow ta">வாருங்கள்</p>
+    <h2 class="en">Visit &amp; Feed Them Yourself</h2>
+    <span class="ta h2t">நேரில் வந்து உங்கள் கையால் உணவளியுங்கள்</span>
+    <p class="lead en">You are always welcome. Bring agathi keerai, bananas or jaggery and receive Gau Mata's blessings.</p>
+    <p class="lead ta">எப்போதும் வரவேற்கிறோம். அகத்திக்கீரை, வாழைப்பழம், வெல்லம் கொண்டு வந்து கோமாதாவின் ஆசியைப் பெறுங்கள்.</p>
+    <div class="v-grid">
+      <div class="card reveal">
+        <h3>Sathyanarayanan<span class="ta keep">சத்யநாராயணன்</span></h3>
+        <div class="phone">+91 94433 76536</div>
+        <div class="row">
+          <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=919443376536&text=Namaskaram%2C%20I%20would%20like%20to%20know%20more%20about%20Lokah%20Samasta%20Sukhino%20Bhavantu%20Goshala." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-outline" href="tel:+919443376536"><span class="en">Call</span><span class="ta">அழைக்க</span></a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>Yasodha<span class="ta keep">யசோதா</span></h3>
+        <div class="phone">+91 99430 75441</div>
+        <div class="row">
+          <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=919943075441&text=Namaskaram%2C%20I%20would%20like%20to%20know%20more%20about%20Lokah%20Samasta%20Sukhino%20Bhavantu%20Goshala." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-outline" href="tel:+919943075441"><span class="en">Call</span><span class="ta">அழைக்க</span></a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3><span class="en">Our Goshala</span><span class="ta">எங்கள் கோசாலை</span></h3>
+        <p class="en">Padhur Gramam (Agraharam), Kallakurichi District, Tamil Nadu</p>
+        <p class="ta">பாதூர் கிராமம் (அக்ரஹாரம்), கள்ளக்குறிச்சி மாவட்டம், தமிழ்நாடு</p>
+        <div class="row" style="margin-top:14px">
+          <a class="btn btn-maroon" href="https://maps.app.goo.gl/2apr7DA5x7rWWyMJA" target="_blank" rel="noopener"><span class="en">Directions</span><span class="ta">வழி</span></a>
+          <button class="btn btn-outline" id="shareBtn"><span class="en">Share</span><span class="ta">பகிர</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="dev">स्वस्ति प्रजाभ्यः परिपालयन्तां न्यायेन मार्गेण महीं महीशाः ।<br>गोब्राह्मणेभ्यः शुभमस्तु नित्यं लोकाः समस्ताः सुखिनो भवन्तु ॥</p>
+    <p class="ta-line ta keep">ஸ்வஸ்தி ப்ரஜாப்ய: பரிபாலயந்தாம் ந்யாயேன மார்கேண மஹீம் மஹீஶா: ।<br>கோ ப்ராஹ்மணேப்யோ சுபமஸ்து நித்யம் லோகா: ஸமஸ்தா ஸுகிநோ பவந்து ॥</p>
+    <p class="tr">Svasti prajābhyaḥ paripālayantāṃ nyāyena mārgeṇa mahīṃ mahīśāḥ · go-brāhmaṇebhyaḥ śubham astu nityaṃ lokāḥ samastāḥ sukhino bhavantu</p>
+    <p class="mean en">May all people be well. May those who rule protect the earth on the path of justice. May cows and the wise always be blessed. May all the worlds be happy.</p>
+    <p class="mean ta">மக்கள் அனைவரும் நலமாக இருக்கட்டும்; ஆள்பவர்கள் நீதி வழியில் பூமியைக் காக்கட்டும்; பசுக்களுக்கும் சான்றோர்களுக்கும் என்றும் நன்மை உண்டாகட்டும்; உலகங்கள் அனைத்தும் இன்புற்று வாழட்டும்.</p>
+    <div class="sig">Sathya &amp; Yasodha</div>
+    <p class="fine">© <span id="yr">2026</span> Lokah Samasta Sukhino Bhavantu Goshala · Padhur Gramam (Agraharam), Kallakurichi, Tamil Nadu</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <button class="btn btn-saffron" data-donate="1167" data-for="Daily Seva — feed all cows for 1 day" data-for-ta="தினசரி சேவை — ஒரு நாள் உணவு"><span class="en">Feed for a day · ₹1,167</span><span class="ta">ஒரு நாள் உணவு · ₹1,167</span></button>
+  <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=919943075441" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
+</div>
+
+<!-- DONATE MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="x" id="mClose" aria-label="Close">×</button>
+    <div id="payView">
+    <p class="for" id="mFor"></p>
+    <div class="big" id="mTitle">₹1,167</div>
+    <div class="qr" id="mQr"></div>
+    <p class="paywith"><span class="en">Pay with</span> <span class="ta">செலுத்த</span></p>
+    <div class="apps">
+      <a class="app gpay" data-app="gpay" href="#">GPay</a>
+      <a class="app phonepe" data-app="phonepe" href="#">PhonePe</a>
+      <a class="app paytm" data-app="paytm" href="#">Paytm</a>
+    </div>
+    <a class="btn btn-outline" id="mPay" data-app="upi" href="#"><span class="en">Other UPI app</span><span class="ta">மற்ற UPI செயலி</span></a>
+    <div class="upi-id" style="margin-top:12px"><span>sakthikumark4151-1@okicici</span><button class="copy" data-copy="sakthikumark4151-1@okicici">Copy</button></div>
+    <div class="steps">
+      <div><span><span class="en">Tap GPay / PhonePe / Paytm above, or scan the QR with any UPI app.</span><span class="ta"> மேலே உள்ள GPay / PhonePe / Paytm-ஐ அழுத்தவும் அல்லது QR-ஐ ஸ்கேன் செய்யவும்.</span></span></div>
+      <div><span><span class="en">Or send to GPay/PhonePe 94433 76536 / 99430 75441.</span><span class="ta"> அல்லது GPay/PhonePe 94433 76536 / 99430 75441 எண்ணுக்கு அனுப்பவும்.</span></span></div>
+      <div><span><span class="en">Send the payment screenshot on WhatsApp to Yasodha (99430 75441) — she will send your receipt.</span><span class="ta"> பணம் செலுத்திய ஸ்கிரீன்ஷாட்டை யசோதா (99430 75441) அவர்களுக்கு WhatsApp-இல் அனுப்புங்கள் — அவர் ரசீது அனுப்புவார்.</span></span></div>
+    </div>
+    <button class="btn btn-outline" id="mPaid" type="button" style="margin-top:14px"><span class="en">Already paid? Send confirmation</span><span class="ta">பணம் செலுத்திவிட்டீர்களா?</span></button>
+    </div>
+    <div id="doneView" hidden>
+      <div class="done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <p class="done-t"><span class="en">Thank you! 🙏</span> <span class="ta">நன்றி!</span></p>
+      <div class="big" id="dAmt">₹1,167</div>
+      <p class="for" id="dFor"></p>
+      <a class="btn btn-wa done-wa" id="mWa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+        <span><span class="en">Send payment confirmation on WhatsApp</span><span class="ta">WhatsApp-இல் பணம் செலுத்திய உறுதிப்படுத்தலை அனுப்புக</span></span>
+      </a>
+      <p class="done-note"><span class="en">Please attach your payment screenshot. Yasodha will send your receipt.</span> <span class="ta">பணம் செலுத்திய ஸ்கிரீன்ஷாட்டை இணைக்கவும் — யசோதா அவர்கள் ரசீது அனுப்புவார்.</span></p>
+      <button class="linkbtn" id="mBack" type="button"><span class="en">Payment didn't go through? Pay again</span><span class="ta"> · மீண்டும் செலுத்த</span></button>
+    </div>
+    <p class="small"><span class="en">May Gau Mata bless you and your family.</span> <span class="ta">கோமாதா உங்களையும் உங்கள் குடும்பத்தையும் ஆசீர்வதிக்கட்டும்.</span></p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="qrcode.js"></script>
+<script>
+(function(){
+  var UPI = "sakthikumark4151-1@okicici";
+  var PAYEE = "Lokah Samasta Goshala";
+  var WA = "919943075441";
+
+  /* ---- feed table (monthly costs; daily = monthly / 30, yearly = monthly x 12) ---- */
+  var FEED = [
+    {name:"Kutchi Theevanam", ta:"குச்சித் தீவனம்", desc:"Green fodder", icon:"🌿", m:5500},
+    {name:"Gothumai Thavidu", ta:"கோதுமை தவிடு", desc:"Wheat bran", icon:"🥣", m:11500},
+    {name:"Karukka Thavidu", ta:"கருக்கா தவிடு", desc:"Paddy / rice bran", icon:"🍚", m:7500},
+    {name:"Punnaku", ta:"புண்ணாக்கு", desc:"Oil cake", icon:"🥥", m:3500},
+    {name:"Vaikol", ta:"வைக்கோல்", desc:"Paddy straw", icon:"🌾", m:4000},
+    {name:"Meichal Caretaker", ta:"மேய்ச்சல் பராமரிப்பாளர்", desc:"Grazing care for all cows", icon:"🙏", m:3000}
+  ];
+  var inr = function(n){ return "₹" + Math.round(n).toLocaleString("en-IN"); };
+  var body = document.getElementById("feedBody");
+  (function(){ var tot=Math.round(FEED.reduce(function(a,f){return a+f.m;},0)/30), base=0;
+    FEED.forEach(function(f){ f.d=Math.floor(f.m/30); f.r=f.m/30-f.d; base+=f.d; });
+    FEED.slice().sort(function(a,b){return b.r-a.r;}).slice(0,tot-base).forEach(function(f){ f.d++; }); })();
+  FEED.forEach(function(f){
+    var d=f.d, y=f.m*12, tr=document.createElement("tr");
+    tr.innerHTML =
+      '<td><div class="item"><span class="dot" aria-hidden="true">'+f.icon+'</span><div class="nm">'+f.name+' <span class="ta keep">('+f.ta+')</span><div class="desc">'+f.desc+'</div></div></div></td>'+
+      '<td class="money d" data-l="Per day · நாள்">'+inr(d)+'</td>'+
+      '<td class="money" data-l="Per month · மாதம்">'+inr(f.m)+'</td>'+
+      '<td class="money" data-l="Per year · வருடம்">'+inr(y)+'</td>'+
+      '<td><div class="mini">'+
+        '<button data-donate="'+Math.round(d)+'" data-for="'+f.name+' ('+f.desc+') — 1 day" data-for-ta="'+f.ta+' — ஒரு நாள்">Day</button>'+
+        '<button data-donate="'+Math.round(f.m)+'" data-for="'+f.name+' ('+f.desc+') — 1 month" data-for-ta="'+f.ta+' — ஒரு மாதம்">Month</button>'+
+        '<button data-donate="'+y+'" data-for="'+f.name+' ('+f.desc+') — 1 year" data-for-ta="'+f.ta+' — ஒரு வருடம்">Year</button>'+
+      '</div></td>';
+    body.appendChild(tr);
+  });
+
+  /* ---- language ---- */
+  var langBtns = document.querySelectorAll(".lang button");
+  function setLang(l){
+    document.body.dataset.lang = l;
+    document.documentElement.lang = l==="ta" ? "ta" : "en";
+    langBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.l===l); });
+    try{ localStorage.setItem("goshala-lang", l); }catch(e){}
+  }
+  langBtns.forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.l); }); });
+  try{ var saved = localStorage.getItem("goshala-lang"); if(saved) setLang(saved); }catch(e){}
+
+  /* ---- header ---- */
+  var header=document.getElementById("top"), sticky=document.getElementById("sticky");
+  function onScroll(){
+    var y=window.scrollY;
+    header.classList.toggle("solid", y>60);
+    var don=document.getElementById("donate").getBoundingClientRect();
+    sticky.classList.toggle("show", y>window.innerHeight*0.8 && !(don.top<window.innerHeight && don.bottom>0));
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* ---- slider ---- */
+  var track=document.getElementById("track"), slides=track.children, dotsEl=document.getElementById("dots"),
+      counter=document.getElementById("counter"), n=slides.length, cur=0, timer;
+  for(var i=0;i<n;i++){ (function(i){
+    var b=document.createElement("button"); b.setAttribute("aria-label","Photo "+(i+1));
+    b.addEventListener("click", function(){ go(i); restart(); }); dotsEl.appendChild(b);
+  })(i); }
+  function go(i){ cur=(i+n)%n; track.scrollTo({left:cur*track.clientWidth, behavior:"smooth"}); paint(); }
+  function paint(){
+    [].forEach.call(dotsEl.children,function(d,j){ d.setAttribute("aria-current", j===cur); });
+    counter.textContent=(cur+1)+" / "+n;
+  }
+  var st; track.addEventListener("scroll", function(){
+    clearTimeout(st); st=setTimeout(function(){ cur=Math.round(track.scrollLeft/track.clientWidth); paint(); },80);
+  }, {passive:true});
+  document.querySelector(".arrow.prev").addEventListener("click", function(){ go(cur-1); restart(); });
+  document.querySelector(".arrow.next").addEventListener("click", function(){ go(cur+1); restart(); });
+  function restart(){ clearInterval(timer); timer=setInterval(function(){ if(!document.hidden) go(cur+1); }, 4500); }
+  var slider=document.getElementById("slider");
+  slider.addEventListener("pointerenter", function(){ clearInterval(timer); });
+  slider.addEventListener("pointerleave", restart);
+  track.addEventListener("touchstart", function(){ clearInterval(timer); }, {passive:true});
+  track.addEventListener("touchend", restart, {passive:true});
+  document.addEventListener("keydown", function(e){
+    if(document.getElementById("modal").classList.contains("open")) return;
+    if(e.key==="ArrowRight") { go(cur+1); restart(); } if(e.key==="ArrowLeft") { go(cur-1); restart(); }
+  });
+  paint(); restart();
+
+  /* ---- QR ---- */
+  function upiLink(amt, note){
+    var p = "pa="+UPI+"&pn="+encodeURIComponent(PAYEE)+"&cu=INR";
+    if(amt) p += "&am="+Number(amt).toFixed(2);
+    if(note) p += "&tn="+encodeURIComponent(note.slice(0,60));
+    return "upi://pay?"+p;
+  }
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  function appLink(app, amt, note){
+    var q = upiLink(amt, note).split("?")[1];
+    if(app==="gpay") return (isIOS ? "gpay://upi/pay?" : "tez://upi/pay?") + q;
+    if(app==="phonepe") return "phonepe://pay?" + q;
+    if(app==="paytm") return "paytmmp://pay?" + q;
+    return "upi://pay?" + q;
+  }
+  function qrSvg(text){
+    var q = qrcode(0,"M"); q.addData(text); q.make();
+    return q.createSvgTag({cellSize:4, margin:0, scalable:true});
+  }
+  document.getElementById("mainQr").innerHTML = qrSvg(upiLink(null,"Goshala Donation"));
+
+  /* ---- modal ---- */
+  var modal=document.getElementById("modal");
+  function openDonate(amt, forEn, forTa, opts){
+    amt = Math.round(Number(amt));
+    if(!amt || amt<1){ toast("Please enter an amount · தொகையை உள்ளிடவும்"); return; }
+    var note = "Goshala - " + forEn.split(" — ")[0];
+    document.getElementById("mTitle").textContent = inr(amt);
+    var lang=document.body.dataset.lang;
+    document.getElementById("mFor").textContent = lang==="ta" ? forTa : (lang==="en" ? forEn : forEn + " · " + forTa);
+    document.getElementById("mQr").innerHTML = qrSvg(upiLink(amt, note));
+    document.querySelectorAll(".sheet [data-app]").forEach(function(a){ a.href = appLink(a.dataset.app, amt, note); });
+    var msg = "Namaskaram 🙏\nI have donated "+inr(amt)+" to Lokah Samasta Sukhino Bhavantu Goshala for: "+forEn+".\n\nMy name: \nPlace: \n\nPayment screenshot attached. Kindly send my receipt.";
+    document.getElementById("mWa").href = "https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
+    document.getElementById("dAmt").textContent = inr(amt);
+    document.getElementById("dFor").textContent = document.getElementById("mFor").textContent;
+    current = {amt:amt, forEn:forEn, forTa:forTa};
+    showView(opts && opts.done ? "done" : "pay");
+    modal.classList.add("open"); document.body.style.overflow="hidden";
+    document.getElementById("mClose").focus();
+  }
+  var current = null, payStarted = 0;
+  function showView(v){
+    document.getElementById("payView").hidden = v!=="pay";
+    document.getElementById("doneView").hidden = v!=="done";
+    document.querySelector(".sheet").scrollTop = 0;
+  }
+  var PKEY = "goshala-pending-pay";
+  function savePending(){ try{ sessionStorage.setItem(PKEY, JSON.stringify({c:current, t:Date.now()})); localStorage.setItem(PKEY, JSON.stringify({c:current, t:Date.now()})); }catch(e){} }
+  function readPending(){ try{ var v = sessionStorage.getItem(PKEY) || localStorage.getItem(PKEY); return v ? JSON.parse(v) : null; }catch(e){ return null; } }
+  function clearPending(){ try{ sessionStorage.removeItem(PKEY); localStorage.removeItem(PKEY); }catch(e){} }
+  /* donor came back from GPay/PhonePe/Paytm → show only the WhatsApp confirmation */
+  function onReturn(){
+    if(document.hidden) return;
+    if(payStarted && Date.now()-payStarted > 1500 && current){ payStarted = 0; openDonate(current.amt, current.forEn, current.forTa, {done:true}); return; }
+    if(!modal.classList.contains("open")){
+      var p = readPending();
+      if(p && p.c && Date.now()-p.t < 30*60*1000){ openDonate(p.c.amt, p.c.forEn, p.c.forTa, {done:true}); }
+    }
+  }
+  document.addEventListener("visibilitychange", onReturn);
+  window.addEventListener("pageshow", function(){ setTimeout(onReturn, 300); });
+  document.getElementById("mPaid").addEventListener("click", function(){ showView("done"); });
+  document.getElementById("mBack").addEventListener("click", function(){ showView("pay"); });
+  document.getElementById("mWa").addEventListener("click", function(){ clearPending(); });
+  function closeDonate(){ modal.classList.remove("open"); document.body.style.overflow=""; payStarted = 0; if(!document.getElementById("doneView").hidden) clearPending(); }
+  document.getElementById("mClose").addEventListener("click", closeDonate);
+  modal.addEventListener("click", function(e){ if(e.target===modal) closeDonate(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeDonate(); });
+  document.addEventListener("click", function(e){
+    var b=e.target.closest("[data-donate]"); if(!b) return;
+    openDonate(b.dataset.donate, b.dataset.for, b.dataset.forTa);
+  });
+  document.querySelectorAll(".sheet [data-app]").forEach(function(a){ a.addEventListener("click", function(e){
+    if(!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && !isIOS){ e.preventDefault(); toast("Open this page on your phone, or scan the QR · QR-ஐ ஸ்கேன் செய்யவும்"); return; }
+    var t=Date.now(); payStarted = t; savePending();
+    setTimeout(function(){ if(!document.hidden && payStarted===t){ payStarted = 0; toast("App not found? Scan the QR or pay to 94433 76536"); } }, 1800);
+  }); });
+
+  /* custom amount */
+  var amtIn=document.getElementById("customAmt");
+  document.getElementById("chips").addEventListener("click", function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    [].forEach.call(this.children,function(c){c.classList.remove("on");}); b.classList.add("on"); amtIn.value=b.dataset.v;
+  });
+  document.getElementById("customGo").addEventListener("click", function(){
+    openDonate(amtIn.value, "General donation for Go Seva", "கோ சேவைக்கான நன்கொடை");
+  });
+
+  /* copy */
+  document.addEventListener("click", function(e){
+    var c=e.target.closest("[data-copy]"); if(!c) return;
+    var t=c.dataset.copy;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast("UPI ID copied · நகலெடுக்கப்பட்டது"); },
+      function(){ var r=document.createRange(); r.selectNodeContents(c.previousElementSibling); var s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Long-press to copy"); });
+  });
+
+  /* share */
+  document.getElementById("shareBtn").addEventListener("click", function(){
+    var data={title:"Lokah Samasta Sukhino Bhavantu Goshala", text:"Namaskaram 🙏 Please visit and support our goshala in Padhur Gramam (Agraharam) — feed Gau Mata for a day with ₹1,167.", url:location.href};
+    if(navigator.share){ navigator.share(data).catch(function(){}); }
+    else { window.open("https://api.whatsapp.com/send?text="+encodeURIComponent(data.text+" "+data.url),"_blank"); }
+  });
+
+  /* toast */
+  var tEl=document.getElementById("toast"), tT;
+  function toast(m){ tEl.textContent=m; tEl.classList.add("show"); clearTimeout(tT); tT=setTimeout(function(){tEl.classList.remove("show");},2600); }
+
+  /* reveal + counters */
+  var io = "IntersectionObserver" in window ? new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{threshold:.12}) : null;
+  document.querySelectorAll(".reveal").forEach(function(el){ io ? io.observe(el) : el.classList.add("in"); });
+  document.querySelectorAll("[data-count]").forEach(function(el){
+    var to=+el.dataset.count, s=null; if(to<2) return;
+    function step(t){ if(!s) s=t; var p=Math.min(1,(t-s)/1400); el.textContent=Math.round(to*p); if(p<1) requestAnimationFrame(step); }
+    el.textContent="0"; setTimeout(function(){ requestAnimationFrame(step); }, 500);
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
